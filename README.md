@@ -8,5 +8,5 @@ port via a minimalistic message system prepending each channel value with a
 
 ### Pure data patch
 
-The `analogsInFromSerial.pd` file shows how to parse the serial input
+The `analogsInFromSerial.pd` patch shows how to parse the serial input
 with pure data vanilla.

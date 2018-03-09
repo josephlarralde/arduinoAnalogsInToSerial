@@ -3,7 +3,7 @@
 ### Arduino code
 
 The `analogsInToSerial.ino` program sends analog input values over the serial
-port via a minimalistic message system : it prepends each channel value with a
+port via a minimalistic message system prepending each channel value with a
 `A0`, `A1`, ... `A5` message to allow any client to parse the incoming data flow.
 
 ### Pure data patch

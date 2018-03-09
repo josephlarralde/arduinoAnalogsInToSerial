@@ -16,6 +16,22 @@
 // HERE 0000 to 1023 -> WE NEED 4 DIGITS
 const int MAXLEN = 4;
 
+typedef struct {
+  int id;
+  String sid;  
+} analogInput;
+
+const analogInput inputs[] = {
+  { A0, "A0" },
+  { A1, "A1" },
+  { A2, "A2" },
+  { A3, "A3" },
+  { A4, "A4" },
+  { A5, "A5" },
+};
+
+const int nInputs = sizeof(inputs) / sizeof(inputs[0]);
+
 void setup() {
   Serial.begin(9600);
 }
@@ -26,51 +42,18 @@ void loop() {
   char valueStr[4];
   int len;
   int i;
-  
-  // DISABLE ANY ANALOG INPUT,
+
+  // TO DISABLE ANY ANALOG INPUT,
   // JUST COMMENT OUT THE CORRESPONDING BLOCK.
-  
-  Serial.print("A0");
-  value = analogRead(A0);
-  itoa(value,valueStr,10);
-  len = MAXLEN - strlen(valueStr);
-  for(i=0;i<len;i++) Serial.print(0);
-  Serial.print(value);
-  
-  Serial.print("A1");
-  value = analogRead(A1);
-  itoa(value,valueStr,10);
-  len = MAXLEN - strlen(valueStr);
-  for(i=0;i<len;i++) Serial.print(0);
-  Serial.print(value);
-  
-  Serial.print("A2");
-  value = analogRead(A2);
-  itoa(value,valueStr,10);
-  len = MAXLEN - strlen(valueStr);
-  for(i=0;i<len;i++) Serial.print(0);
-  Serial.print(value);
 
-  Serial.print("A3");
-  value = analogRead(A3);
-  itoa(value,valueStr,10);
-  len = MAXLEN - strlen(valueStr);
-  for(i=0;i<len;i++) Serial.print(0);
-  Serial.print(value);
-
-  Serial.print("A4");
-  value = analogRead(A4);
-  itoa(value,valueStr,10);
-  len = MAXLEN - strlen(valueStr);
-  for(i=0;i<len;i++) Serial.print(0);
-  Serial.print(value);
-
-  Serial.print("A5");
-  value = analogRead(A5);
-  itoa(value,valueStr,10);
-  len = MAXLEN - strlen(valueStr);
-  for(i=0;i<len;i++) Serial.print(0);
-  Serial.print(value);
-
+  for (int i = 0; i < nInputs; ++i) {
+    Serial.print(inputs[i].sid);
+    value = analogRead(inputs[i].id);
+    itoa(value, valueStr, 10);
+    len = MAXLEN - strlen(valueStr);
+    for(i=0;i<len;i++) Serial.print(0);
+    Serial.print(value);
+  }
+    
   delay(10);
 }
